@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'static_pages#home'
 
   # static pages routes, not connected to models
@@ -9,8 +11,11 @@ Rails.application.routes.draw do
   # dynamic routes
   get '/register', to: 'users#new'
 
+  #login routes
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   # restful routes
-  resources :users
+  resources :users, except: [ :new ]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
