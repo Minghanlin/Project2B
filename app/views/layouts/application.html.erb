@@ -35,24 +35,26 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li>
-              <%= link_to "About", about_path %>
+              <%= link_to "Home", root_path %>
+          </li>
+          <li>
+            <%= link_to "About", about_path %>
+          </li>
+
+          <% if logged_in? %> <!-- Already logged in_-->
+            <li>
+                <%= link_to "My page", current_user %>
             </li>
             <li>
-              <%= link_to "Help", help_path %>
+              <%= link_to "Logout", logout_path, method: :delete %>
             </li>
-            <% if logged_in? %>
+          <% else %>
             <li>
-              <%= link_to "My Page", current_user %>
-
+              <%= link_to "Signup", register_path %>
             </li>
-
-            <% else %>
-
-
             <li>
-              <%= link_to "Sign Up", register_path %>
+              <%= link_to "Login", login_path %>
             </li>
-
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->

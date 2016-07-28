@@ -3,21 +3,28 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-
-
+     user = User.find_by(email: params[:session][:email].downcase)
+    #  debugger
     # if user is found
-  if user && user.authenticate( params[:session][:password])
-    flash[:success] = 'Successful login yay!'
-    log_in(user)
-    # authenticate it and redirect to user profile page => user/:id
-    redirect_to user
+    if user && user.authenticate( params[:session][:password] )
+      # not rendering
+      flash[:success] = 'Success login yay!'
+      log_in(user)
+
+      redirect_to user  
 
   else
     # show error page
     flash.now[:danger] = 'Invalid email/password combination'
     render 'new'
   end
+end
+
+def destroy
+  log_out if logged_in?
+  # add flash after log out
+  flash[:info] = 'Bye bye'
+  redirect_to root_url
 end
 
 end
