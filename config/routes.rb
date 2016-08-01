@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # dynamic routes
   get '/register', to: 'users#new'
-  get '/products', to: 'products#show'
+  get '/products', to: 'products#index'
 
 
   # login routes
