@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project 2B</title>
+    <title>Redmart on Rails</title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width">
@@ -35,10 +35,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li>
-              <%= link_to "Home", root_path %>
+              <%= link_to "About", about_path %>
           </li>
           <li>
-            <%= link_to "About", about_path %>
+            <%= link_to "Help", help_path %>
           </li>
 
           <% if logged_in? %> <!-- Already logged in_-->
