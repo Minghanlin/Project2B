@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   before_action :require_login,  only: [:show, :edit, :update]
   before_action :set_user,       only: [:show, :edit, :update, :destroy]
 #doesn't allow access to other's page
-  #before_action :correct_user,   only: [:show, :create, :edit, :update]
+  before_action :correct_user,   only: [:show, :create, :edit, :update]
 #allows access to other's page
-  before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :require_logout, only: [:new]
+  #before_action :require_logout, only: [:new]
 
 
   # GET /users
@@ -31,6 +30,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -77,6 +77,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+     params.require(:user).permit(:firstname, :lastname, :address, :salutation, :zipcode, :country, :contactnum, :email, :password,
+                                  :password_confirmation)
+   end
     # Never trust parameters from the scary internet, only allow the white list through.
     def permitted_user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

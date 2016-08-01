@@ -1,14 +1,18 @@
+
 source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-gem 'pry'
 gem 'bootstrap-sass', '3.3.6'
 gem 'bcrypt',         '3.1.11'
-
+gem 'carrierwave',             '0.11.2'
+gem 'mini_magick',             '4.5.1'
+gem 'fog',                     '1.38.0'
+gem 'will_paginate',           '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'faker'
+gem 'pry'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -35,7 +41,6 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
@@ -50,10 +55,10 @@ group :development do
 end
 
 group :production do
-  # install postgres only on production environment = heroku
-  gem 'pg'
-end
 
+  gem 'pg'
+
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

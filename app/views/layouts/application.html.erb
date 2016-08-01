@@ -46,6 +46,10 @@
                 <%= link_to "My page", current_user %>
             </li>
             <li>
+              <%= link_to "Settings", edit_user_path(current_user) %>
+            </li>
+            <li class="divider"></li>
+            <li>
               <%= link_to "Logout", logout_path, method: :delete %>
             </li>
           <% else %>
