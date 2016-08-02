@@ -2,12 +2,45 @@
 <% provide(:title, 'Edit Product') %>
 <% provide(:button_text, 'Save changes') %>
 <h1>Update Product</h1>
+
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= render 'form' %>
+    <%= form_for(@product) do |f| %>
+
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @product from being saved:</h2>
+
+          <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
+
+      <%= f.label :category %>
+      <%= f.text_field  :category, class: 'form-control' %>
+
+      <%= f.label :brand %>
+      <%= f.text_field  :brand, class: 'form-control' %>
+
+      <span class="picture">
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+      </span>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
     <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">Change</a>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
     </div>
   </div>
 </div>

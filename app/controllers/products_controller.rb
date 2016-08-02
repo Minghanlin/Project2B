@@ -25,35 +25,26 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-end
 
-def product_params
-  params.require(:product).permit(:name, :price)
-end
-
-def set_product
-  @product = Product.find(params[:id])
-end
 
 def update
-  respond_to do |format|
-    if @product.update(user_params)
-      flash[:success] = 'Product was successfully updated.'
-      format.html { redirect_to @product }
-      format.json { render :show, status: :ok, location: @product }
-    else
-      format.html { render :edit }
-      format.json { render json: @product.errors, status: :unprocessable_entity }
-    end
+  @product = Product.find(params[:id])
+  if @product.update_attributes(product_params)
+    flash[:success] = 'Product updated'
+    redirect_to @product
+    # Handle a successful update.
+  else
+    render 'edit'
+
   end
 end
 
+
+
 def destroy
-  @product.destroy
-  respond_to do |format|
-    format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-    format.json { head :no_content }
-  end
+  @product = Product.destroy(params[:id])
+  flash[:success] = 'Product deleted'
+  redirect_to request.referrer || root_url
 end
 
 private
@@ -61,3 +52,12 @@ private
   def product_params
     params.require(:product).permit(:content, :picture, :name, :price, :brand, :category)
   end
+
+  # def product_params
+  #   params.require(:product).permit(:name, :price)
+  # end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+end
