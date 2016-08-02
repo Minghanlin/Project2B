@@ -55,3 +55,9 @@ def destroy
     format.json { head :no_content }
   end
 end
+
+private
+
+  def product_params
+    params.require(:product).permit(:content, :picture, :name, :price, :brand, :category)
+  end

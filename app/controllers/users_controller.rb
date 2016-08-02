@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_login,  only: [:show, :edit, :update]
   before_action :set_user,       only: [:show, :edit, :update, :destroy]
 #doesn't allow access to other's page
-  before_action :correct_user,   only: [:show, :create, :edit, :update]
+  before_action :correct_user,   only: [:show, :edit, :update]
 #allows access to other's page
   #before_action :require_logout, only: [:new]
 
