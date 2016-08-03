@@ -5,4 +5,7 @@ class Review < ApplicationRecord
   belongs_to :product
   validates :product_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+  def feed
+  Review.where("review_id = ?", id)
+end
 end
