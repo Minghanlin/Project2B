@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # restful routes
   resources :users, except: :index
   resources :products
+  resources :reviews, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

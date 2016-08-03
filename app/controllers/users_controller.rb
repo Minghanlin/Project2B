@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -116,5 +118,9 @@ end
         flash[:warning] = "You must be logged out to create a new user"
         redirect_to(root_url)
       end
+    end
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
