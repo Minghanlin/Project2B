@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     if logged_in?
-      flash[:warning] = "You must logged out to create a new user"
+      flash[:warning] = "You must be logged out to create a new user"
       redirect_to(root_url)
     end
 

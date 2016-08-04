@@ -2,7 +2,7 @@ module StaticPagesHelper
 
   def heading_detail(heading)
     if logged_in?
-    base_heading = "Hello, logged in Redmart user!"
+    base_heading = "Hello, Redmart User!"
     else
     base_heading = "Welcome to Redmart"
     end

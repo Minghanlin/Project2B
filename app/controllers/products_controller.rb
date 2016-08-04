@@ -1,15 +1,18 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @user = User.find_by(params[:name])
   end
 
   def show
     @product = Product.find(params[:id])
     @reviews = @product.reviews.paginate(page: params[:page])
+    @user = User.find_by(params[:name])
   end
 
   def new
     @product = Product.new
+    @user = User.find_by(params[:name])
   end
 
   def create
