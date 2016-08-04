@@ -56,6 +56,7 @@ end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = 'User was successfully updated.'
