@@ -32,5 +32,14 @@
         <%= render 'shared/review_form' %>
       </section>
     </aside>
+    <div class="col-md-8">
+      <% if @product.reviews.any? %>
+        <h3>Reviews (<%= @product.reviews.count %>)</h3>
+        <ol class="reviews">
+          <%= render @reviews %>
+        </ol>
+        <%= will_paginate @reviews %>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -37,11 +37,12 @@
             <li>
               <%= link_to "About", about_path %>
           </li>
-          <li>
-            <%= link_to "Help", help_path %>
-          </li>
+
 
           <% if logged_in? %> <!-- Already logged in_-->
+            <li>
+                <%= link_to "Products", products_path %>
+            </li>
             <li>
                 <%= link_to "My page", current_user %>
             </li>
@@ -78,7 +79,7 @@
       </small>
       <nav>
         <ul>
-          <li><%= link_to "About",   about_path %></li>
+          <li><%= link_to "Help",   help_path %></li>
         </ul>
       </nav>
     </footer>
