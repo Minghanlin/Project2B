@@ -83,7 +83,7 @@ end
   private
 
   def user_params
-     params.require(:user).permit(:firstname, :lastname, :address, :salutation, :zipcode, :country, :contactnum, :email, :password,
+     params.require(:user).permit(:name, :email, :password,
                                   :password_confirmation)
    end
     # Never trust parameters from the scary internet, only allow the white list through.
