@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     # if user is found
     if user && user.authenticate( params[:session][:password] )
       # not rendering
-      flash[:success] = 'Success login yay!'
+      flash[:success] = 'Successful login yay!'
       log_in(user)
 
-      redirect_to user  
+      redirect_to user
 
   else
     # show error page
